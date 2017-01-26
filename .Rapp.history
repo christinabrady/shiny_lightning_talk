@@ -1,0 +1,705 @@
+subset(ens, project_id == "P151544")
+with(nochange, table(risk_rating_stage, risk_rating))
+addmargins(with(subset(df, Freq == 1), table(risk_rating_stage, risk_rating)))
+1671+560
+head(sub)
+onechange <- subset(ens, project_id %in% sub$project_id[sub$changes == 1])
+head(onechange)
+risk_map <- c("L" = 1, "M" = 2, "S" = 3, "H" = 4)#
+onechange$risk_coding <- risk_map[onechange$risk_rating]#
+direction <- unlist(lapply(split(onechange, onechange$project_id), function(x) return(sum(diff(x$risk_coding)))))#
+table(direction)
+head(direction)
+subset(ens, project_id == "P006553")
+onechange$risk_coding <- risk_map[onechange$risk_rating]#
+direction <- unlist(lapply(split(onechange, onechange$project_id), function(x) {#
+	x <- x[order$risk_rating_sequence]#
+	return(sum(diff(x$risk_coding)))))#
+table(direction)
+direction <- unlist(lapply(split(onechange, onechange$project_id), function(x) {#
+	x <- x[order$risk_rating_sequence]#
+	return(sum(diff(x$risk_coding)))#
+})#
+table(direction)
+direction <- unlist(lapply(split(onechange, onechange$project_id), function(x) {#
+	x <- x[order$risk_rating_sequence]#
+	return(sum(diff(x$risk_coding)))#
+	}))#
+table(direction)
+direction[which[-3]]
+direction[which(-3)]
+direction[direction ==  -3]
+subset(ens, project_id == "P151821")
+onechange <- factor(onechange(risk_rating_stage, levels = c("Concept", "Appraisal", "Decision", "Approval", "Implementing", "Restructuring"))
+onechange <- factor(onechange$risk_rating_stage, levels = c("Concept", "Appraisal", "Decision", "Approval", "Implementing", "Restructuring"))
+head(onechange)
+unique(sort_dat$risk_rating_stage)
+onechange <- subset(ens, project_id %in% sub$project_id[sub$changes == 1])#
+risk_map <- c("L" = 1, "M" = 2, "S" = 3, "H" = 4)#
+onechange$risk_coding <- risk_map[onechange$risk_rating]#
+onechange <- factor(onechange$risk_rating_stage, levels = c("Concept", "Decision", "Approval", "Implementation", "Restructuring"))
+head(onechange)
+direction <- unlist(lapply(split(onechange, onechange$project_id), function(x) {#
+	x <- x[order(x$risk_rating_stage, x$risk_rating_sequence]#
+	return(sum(diff(x$risk_coding)))#
+	}))#
+table(direction)
+direction <- unlist(lapply(split(onechange, onechange$project_id), function(x) {#
+	x <- x[order(x$risk_rating_stage, x$risk_rating_sequence)]#
+	return(sum(diff(x$risk_coding)))#
+	}))#
+table(direction)
+rm(direction)
+head(onechange)
+onechange <- subset(ens, project_id %in% sub$project_id[sub$changes == 1])#
+risk_map <- c("L" = 1, "M" = 2, "S" = 3, "H" = 4)#
+onechange$risk_coding <- risk_map[onechange$risk_rating]#
+onechange$risk_rating_stage <- factor(onechange$risk_rating_stage, levels = c("Concept", "Decision", "Approval", "Implementation", "Restructuring"))#
+direction <- unlist(lapply(split(onechange, onechange$project_id), function(x) {#
+	x <- x[order(x$risk_rating_stage, x$risk_rating_sequence)]#
+	return(sum(diff(x$risk_coding)))#
+	}))#
+table(direction)
+head(onechange)
+unlist(lapply(split(onechange, onechange$project_id), function(x) {#
+	x <- x[order(x$risk_rating_stage, x$risk_rating_sequence)]#
+	print(x)#
+	return(sum(diff(x$risk_coding)))#
+	}))
+head(onechange)
+direction <- unlist(lapply(split(onechange, onechange$project_id), function(x) {#
+	x <- x[order(x$risk_rating_stage, x$risk_rating_sequence),]#
+	print(x)#
+	return(sum(diff(x$risk_coding)))#
+	}))#
+table(direction)
+direction[direction==0]
+subset(onechange, project_id == "P101415")
+sum(diff(subset(onechange, project_id == "P101415")$risk_coding))
+direction <- lapply(split(onechange, onechange$project_id), function(x) {#
+	x <- x[order(x$risk_rating_stage, x$risk_rating_sequence),]#
+	return(sum(diff(x$risk_coding)))#
+	})#
+table(direction)
+subset(onechange, project_id == "P125229")
+sub$risk_rating_stage <- factor(sub$risk_rating_stage, levels = c("Concept", "Decision", "Approval", "Implementation", "Restructuring"))#
+changes <- unlist(lapply(split(sub, sub$project_id), function (x){#
+	x <- x[order(x$risk_rating_stage, x$risk_rating_sequence)]#
+	r <- x$risk_rating#
+	change <- 0#
+	for(i in 1:(length(r)-1)){#
+		if(r[i] != r[i + 1]){#
+		change <- change + 1#
+		}#
+	}#
+	return(change)#
+}))#
+#
+### merge onto initial ratings dat#
+sub$changes <- changes[sub$project_id]
+unlist(lapply(split(sub, sub$project_id), function (x){#
+	r <- x[order(x$risk_rating_stage, x$risk_rating_sequence)]$risk_rating#
+	print(r)#
+	change <- 0#
+	for(i in 1:(length(r)-1)){#
+		if(r[i] != r[i + 1]){#
+		change <- change + 1#
+		}#
+	}#
+	return(change)#
+}))
+changes <- unlist(lapply(split(sub, sub$project_id), function (x){#
+	r <- x[order(x$risk_rating_stage, x$risk_rating_sequence),]$risk_rating#
+	print(r)#
+	change <- 0#
+	for(i in 1:(length(r)-1)){#
+		if(r[i] != r[i + 1]){#
+		change <- change + 1#
+		}#
+	}#
+	return(change)#
+}))
+changes
+table(changes)
+sub$changes <- changes[sub$project_id]#
+#
+nochange <- subset(df, project_id %in% sub$project_id[sub$changes == 0])#
+table(nochange$Freq)#
+with(nochange, table(risk_rating_stage, risk_rating))#
+### subset sort_dat by projects that have at least 1 change and merge the number of changes:#
+onechange <- subset(ens, project_id %in% sub$project_id[sub$changes == 1])#
+risk_map <- c("L" = 1, "M" = 2, "S" = 3, "H" = 4)#
+onechange$risk_coding <- risk_map[onechange$risk_rating]
+str(onechange)
+onechange$risk_rating_stage <- factor(onechange$risk_rating_stage, levels = c("Concept", "Decision", "Approval", "Implementation", "Restructuring"))#
+#
+direction <- lapply(split(onechange, onechange$project_id), function(x) {#
+	x <- x[order(x$risk_rating_stage, x$risk_rating_sequence),]#
+	return(sum(diff(x$risk_coding)))#
+	})#
+table(direction)
+direction <- unlist(lapply(split(onechange, onechange$project_id), function(x) {#
+	x <- x[order(x$risk_rating_stage, x$risk_rating_sequence),]#
+	return(sum(diff(x$risk_coding)))#
+	}))#
+table(direction)
+addmargins(table(direction))
+head(direction)
+with(subset(initial, project_id %in% onechange$project_id), table(risk_rating_stage, risk_rating))
+addmargins(with(subset(initial, project_id %in% onechange$project_id), table(risk_rating_stage, risk_rating)))
+table(changes)
+changeanalysis <- function(no_of_changes){#
+	tmp <- subset(ens, project_id %in% sub$project_id[sub$changes == no_of_changes])#
+	risk_map <- c("L" = 1, "M" = 2, "S" = 3, "H" = 4)#
+	tmp$risk_coding <- risk_map[tmp$risk_rating]#
+	tmp$risk_rating_stage <- factor(tmp$risk_rating_stage, levels = c("Concept", "Decision", "Approval", "Implementation", "Restructuring"))#
+#
+	direction <- unlist(lapply(split(tmp, tmp$project_id), function(x) {#
+		x <- x[order(x$risk_rating_stage, x$risk_rating_sequence),]#
+		return(sum(diff(x$risk_coding)))#
+		}))#
+	return(list(table(direction), with(subset(initial, project_id %in% onechange$project_id), table(risk_rating_stage, risk_rating)))	#
+}
+changeanalysis <- function(no_of_changes){#
+	tmp <- subset(ens, project_id %in% sub$project_id[sub$changes == no_of_changes])#
+	risk_map <- c("L" = 1, "M" = 2, "S" = 3, "H" = 4)#
+	tmp$risk_coding <- risk_map[tmp$risk_rating]#
+	tmp$risk_rating_stage <- factor(tmp$risk_rating_stage, levels = c("Concept", "Decision", "Approval", "Implementation", "Restructuring"))#
+#
+	direction <- unlist(lapply(split(tmp, tmp$project_id), function(x) {#
+		x <- x[order(x$risk_rating_stage, x$risk_rating_sequence),]#
+		return(sum(diff(x$risk_coding)))#
+		}))#
+	return(list(table(direction), with(subset(initial, project_id %in% onechange$project_id), table(risk_rating_stage, risk_rating))))	#
+}
+changeanalysis(1)
+changeanalysis(2)
+changeanalysis(3)
+changeanalysis <- function(no_of_changes){#
+	tmp <- subset(ens, project_id %in% sub$project_id[sub$changes == no_of_changes])#
+	risk_map <- c("L" = 1, "M" = 2, "S" = 3, "H" = 4)#
+	tmp$risk_coding <- risk_map[tmp$risk_rating]#
+	tmp$risk_rating_stage <- factor(tmp$risk_rating_stage, levels = c("Concept", "Decision", "Approval", "Implementation", "Restructuring"))#
+#
+	direction <- unlist(lapply(split(tmp, tmp$project_id), function(x) {#
+		x <- x[order(x$risk_rating_stage, x$risk_rating_sequence),]#
+		return(sum(diff(x$risk_coding)))#
+		}))#
+	return(list(table(direction), with(subset(initial, project_id %in% tmp$project_id), table(risk_rating_stage, risk_rating))))	#
+}
+changeanalysis(3)
+changeanalysis(2)
+changeanalysis <- function(no_of_changes){#
+	tmp <- subset(ens, project_id %in% sub$project_id[sub$changes == no_of_changes])#
+	risk_map <- c("L" = 1, "M" = 2, "S" = 3, "H" = 4)#
+	tmp$risk_coding <- risk_map[tmp$risk_rating]#
+	tmp$risk_rating_stage <- factor(tmp$risk_rating_stage, levels = c("Concept", "Decision", "Approval", "Implementation", "Restructuring"))#
+#
+	direction <- unlist(lapply(split(tmp, tmp$project_id), function(x) {#
+		x <- x[order(x$risk_rating_stage, x$risk_rating_sequence),]#
+		return(sum(diff(x$risk_coding)))#
+		}))#
+	return(list(table(direction), addmargins(with(subset(initial, project_id %in% tmp$project_id), table(risk_rating_stage, risk_rating)))))	#
+}
+changeanalysis(2)
+changeanalysis(2)with(nochange, table(risk_rating_stage, risk_rating))
+with(nochange, table(risk_rating_stage, risk_rating))
+addmargins(with(nochange, table(risk_rating_stage, risk_rating)))
+changeanalysis(1)
+changeanalysis <- function(no_of_changes){#
+	tmp <- subset(ens, project_id %in% sub$project_id[sub$changes == no_of_changes])#
+	risk_map <- c("L" = 1, "M" = 2, "S" = 3, "H" = 4)#
+	tmp$risk_coding <- risk_map[tmp$risk_rating]#
+	tmp$risk_rating_stage <- factor(tmp$risk_rating_stage, levels = c("Concept", "Decision", "Approval", "Implementation", "Restructuring"))#
+#
+	direction <- unlist(lapply(split(tmp, tmp$project_id), function(x) {#
+		x <- x[order(x$risk_rating_stage, x$risk_rating_sequence),]#
+		return(sum(diff(x$risk_coding)))#
+		}))#
+	return(list(addmargins(table(direction)), addmargins(with(subset(initial, project_id %in% tmp$project_id), table(risk_rating_stage, risk_rating)))))	#
+}
+changeanalysis(1)
+sum(diff(c(1, 1, 1, 4)))
+sum(diff(c(4, 4, 4, 1)))
+changeanalysis(2)
+subset(ens, project_id %in% sub$project_id[sub$changes==2])
+subset(ens, project_id %in% sub$project_id[sub$changes==2], select = c("project_id", "risk_rating"))
+twochangesub <- subset(ens, project_id %in% sub$project_id[sub$changes==2], select = c("project_id", "risk_rating", "risk_rating_sequence"))
+twochangesplit <- split(twochangesub, twochangesub$project_id)
+twochangesplit[[1]]
+twochangesplit[[2]]
+twochangesplit[[3]]
+twochangesub <- subset(ens, project_id %in% sub$project_id[sub$changes==2], select = c("project_id", "risk_rating", "risk_rating_sequence", "risk_rating_stage"))#
+twochangesplit <- split(twochangesub, twochangesub$project_id)
+twochangesplit[[3]]
+twochangesplit[[4]]
+twochangesplit[[5]]
+twochangesplit[[6]]
+twochangesplit[[7]]
+twochangesplit[[8]]
+twochangesplit[[9]]
+twochangesplit[[10]]
+twochangesplit[[11]]
+twochangesplit[[12]]
+twochangesplit[[13]]
+twochangesplit[[14]]
+twochangesplit[[15]]
+twochangesplit[[16]]
+twochangesplit[[17]]
+twochangesplit[[18]]
+twochangesplit[[19]]
+twochangesplit[[20]]
+twochangesplit[[21]]
+twochangesplit[[22]]
+twochangesplit[[23]]
+twochangesplit[[24]]
+twochangesplit[[25]]
+twochangesplit[[26]]
+twochangesplit[[27]]
+changeanalysis(3)
+threechangesub <- subset(ens, project_id %in% sub$project_id[sub$changes==3], select = c("project_id", "risk_rating", "risk_rating_sequence", "risk_rating_stage"))
+threechangesub
+threechangesplit <- split(twochangesub, threechangesub$project_id)
+threechangesplit <- split(threechangesub, threechangesub$project_id)
+threechangesplit[[1]]
+threechangesplit[[2]]
+threechangesplit[[3]]
+threechangesplit[[4]]
+threechangesplit[[5]]
+changeanalysis(3)
+changeanalysis(0)
+zerochangesub <- subset(ens, project_id %in% sub$project_id[sub$changes==0], select = c("project_id", "risk_rating", "risk_rating_sequence", "risk_rating_stage"))#
+zerochangesub <- split(zerochangesub, zerochangesub$project_id)
+zerochangesub[[1]]
+zerochangesub[[2]]
+zerochangesub[[3]]
+zerochangesub[[4]]
+zerochangesub[[5]]
+zerochangesub[[6]]
+zerochangesub[[7]]
+zerochangesub[[8]]
+zerochangesub[[100]]
+head(subset(ens, risk_rating_stage == "Restructuring"))
+subset(ens, project_id == "P077317")
+test <- subset(ens, project_id == "P077317")
+test <- factor(test$risk_rating_sequence, levels = c("Concept", "Decision", "Approval", "Implementation", "Restructuring"))
+test[order(test$risk_rating_stage, test$risk_rating_sequence), ]
+test
+test <- subset(ens, project_id == "P077317")
+test$risk_rating_stage <- factor(test$risk_rating_sequence, levels = c("Concept", "Decision", "Approval", "Implementation", "Restructuring"))
+test[order(test$risk_rating_stage, test$risk_rating_sequence), ]
+str(sub)
+nrow(sub[is.na(sub$risk_rating_stage), ])
+str(threechangesub)
+### Environment and Social Analysis #
+#
+options(stringsAsFactors = FALSE)#
+### find initial rating and rating stage for all projects:#
+sort_dat <- read.csv("~/Documents/World Bank/SORT/Tom/box_clone/bi_dumps/2016-03-07/4S.4.1_ Risk Trends by Risk Category.csv")#
+sort_dat <- sort_dat[,c(2,4,6,7, 12,15,16,17,18,19,21,22,34)]#
+#
+names(sort_dat) <- c("project_id","risk_rating_code","risk_rating_stage","practice","country","approval_fy","risk_rating","risk_rating_code_key","region","risk_rating_sequence","risk_rating_ind","practice_key","project_status")#
+#
+sort_dat$risk_rating_sequence <- as.integer(sort_dat$risk_rating_sequence) # will get warnings#
+cat("Ignore the Warnings", fill=TRUE)#
+#
+sort_dat$risk_rating <- factor(sort_dat$risk_rating, levels = c("L", "M", "S", "H"))#
+sort_dat$risk_rating_stage <- factor(sort_dat$risk_rating_stage, levels = c("Concept", "Decision", "Approval", "Implementation", "Restructuring"))#
+#
+ens <- subset(sort_dat, risk_rating_code == "Environment and Social" & project_id != "P000755")
+head(ens)
+nrow(ens[is.na(ens$risk_rating_status),])
+nrow(ens[is.na(ens$risk_rating_stage),])
+ens_split <- split(ens, ens$project_id)#
+initial <- do.call(rbind, lapply(sort_split, function(x){#
+	x <- head(x[order(x$risk_rating_sequence), ], 1)#
+	return(data.frame(risk_rating_stage = x$risk_rating_stage, risk_rating = x$risk_rating))#
+}))#
+#
+initial$project_id <- rownames(initial)#
+#
+### merge with rating frequencies #
+df <- merge(initial, with(ens, table(project_id)))#
+df$risk_rating <- factor(df$risk_rating, levels = c("L", "M", "S", "H"))#
+#
+### projects with only one rating:#
+addmargins(with(subset(df, Freq == 1), table(risk_rating_stage, risk_rating)))
+ens_split <- split(ens, ens$project_id)#
+initial <- do.call(rbind, lapply(ens_split, function(x){#
+	x <- head(x[order(x$risk_rating_sequence), ], 1)#
+	return(data.frame(risk_rating_stage = x$risk_rating_stage, risk_rating = x$risk_rating))#
+}))#
+#
+initial$project_id <- rownames(initial)#
+#
+### merge with rating frequencies #
+df <- merge(initial, with(ens, table(project_id)))#
+df$risk_rating <- factor(df$risk_rating, levels = c("L", "M", "S", "H"))#
+#
+### projects with only one rating:#
+addmargins(with(subset(df, Freq == 1), table(risk_rating_stage, risk_rating)))
+ensfreq <- merge(ens, with(ens, table(project_id)))#
+sub <- subset(ensfreq, Freq > 1)
+str(sub)
+changes <- unlist(lapply(split(sub, sub$project_id), function (x){#
+	r <- x[order(x$risk_rating_stage, x$risk_rating_sequence),]$risk_rating#
+	print(r)#
+	change <- 0#
+	for(i in 1:(length(r)-1)){#
+		if(r[i] != r[i + 1]){#
+		change <- change + 1#
+		}#
+	}#
+	return(change)#
+}))#
+#
+### merge onto initial ratings dat#
+sub$changes <- changes[sub$project_id]
+changeanalysis <- function(no_of_changes){#
+	tmp <- subset(ens, project_id %in% sub$project_id[sub$changes == no_of_changes])#
+	risk_map <- c("L" = 1, "M" = 2, "S" = 3, "H" = 4)#
+	tmp$risk_coding <- risk_map[tmp$risk_rating]#
+	# tmp$risk_rating_stage <- factor(tmp$risk_rating_stage, levels = c("Concept", "Decision", "Approval", "Implementation", "Restructuring"))#
+	direction <- unlist(lapply(split(tmp, tmp$project_id), function(x) {#
+		x <- x[order(x$risk_rating_stage, x$risk_rating_sequence),]#
+		return(sum(diff(x$risk_coding)))#
+		}))#
+	return(list(addmargins(table(direction)), addmargins(with(subset(initial, project_id %in% tmp$project_id), table(risk_rating_stage, risk_rating)))))	#
+}
+changeanalysis(0)
+head(subset(ens, risk_rating_stage == "Restructuring"))
+test <- subset(ens, project_id == "P077317")
+test
+test[order(test$risk_rating_stage, test$risk_rating_sequence), ]
+initial <- do.call(rbind, lapply(ens_split, function(x){#
+	x <- head(x[order(x$risk_rating_stage, x$risk_rating_sequence), ], 1)#
+	return(data.frame(risk_rating_stage = x$risk_rating_stage, risk_rating = x$risk_rating))#
+}))#
+#
+initial$project_id <- rownames(initial)#
+#
+### merge with rating frequencies #
+df <- merge(initial, with(ens, table(project_id)))#
+df$risk_rating <- factor(df$risk_rating, levels = c("L", "M", "S", "H"))
+ensfreq <- merge(ens, with(ens, table(project_id)))#
+sub <- subset(ensfreq, Freq > 1)#
+# sub$risk_rating_stage <- factor(sub$risk_rating_stage, levels = c("Concept", "Decision", "Approval", "Implementation", "Restructuring"))#
+changes <- unlist(lapply(split(sub, sub$project_id), function (x){#
+	r <- x[order(x$risk_rating_stage, x$risk_rating_sequence),]$risk_rating#
+	change <- 0#
+	for(i in 1:(length(r)-1)){#
+		if(r[i] != r[i + 1]){#
+		change <- change + 1#
+		}#
+	}#
+	return(change)#
+}))#
+#
+### merge onto initial ratings dat#
+sub$changes <- changes[sub$project_id]
+changeanalysis <- function(no_of_changes){#
+	tmp <- subset(ens, project_id %in% sub$project_id[sub$changes == no_of_changes])#
+	risk_map <- c("L" = 1, "M" = 2, "S" = 3, "H" = 4)#
+	tmp$risk_coding <- risk_map[tmp$risk_rating]#
+	# tmp$risk_rating_stage <- factor(tmp$risk_rating_stage, levels = c("Concept", "Decision", "Approval", "Implementation", "Restructuring"))#
+	direction <- unlist(lapply(split(tmp, tmp$project_id), function(x) {#
+		x <- x[order(x$risk_rating_stage, x$risk_rating_sequence),]#
+		return(sum(diff(x$risk_coding)))#
+		}))#
+	return(list(addmargins(table(direction)), addmargins(with(subset(initial, project_id %in% tmp$project_id), table(risk_rating_stage, risk_rating)))))	#
+}
+changeanalysis(0)
+changeanalysis(1)
+changeanalysis(2)
+changeanalysis(3)
+560+1671+28+4
+length(unique(sort_dat$project_id))
+freqs <- as.data.frame(with(sort_dat, table(project_id)))
+head(freqs)
+freqs <- as.data.frame(with(ens, table(project_id)))
+head(freqs)
+table(freqs$freq)
+str(freqs)
+table(freqs$Freq)
+sum(table(freqs$Freq)[2:6]
+)
+head(ensfreq)
+nrow(ensfreq)
+nrow(ens)
+nrow(sub)
+length(unique(sub$project_id))
+head(sub)
+changeanalysis(1)
+changeanalysis(0)
+nrow(sub[is.na(sub$changes),])
+table(changes)
+length(split(sub, sub$project_id))
+wtf <- unique(sub$project_id)
+lost <- wtf[!(wtf %in% names(changes))]
+lost
+wtf
+changes
+names(changes)
+length(changes)
+table(changes)
+changes(is.na(changes))
+changes[is.na(changes)]
+sum(table(changes))
+sum(table(changes)) +560
+length(unique(ens$project_id))
+length(unique(sort_dat$project_id))
+x <- sample(c("a", "b", 15, replace = TRUE))
+y = sample(c("d", "e", 15, replace = TRUE))
+table(x, y)
+x
+sample
+?sample
+x
+y = sample(c("d", "e"), 15, replace = TRUE)
+x <- sample(c("a", "b"), 15, replace = TRUE)
+x
+y
+table(x, y)
+library(xlsx)
+packageVersion("ggplot2")
+dat <- data.frame(x = sample(LETTERS[1:4], 1000, p = c(.15, .4, .35. . 1), replace = TRUE), y = sample(LETTERS[20:26], 1000, p = c(.01, .08, .40, .30, .2, 01), replace = TRUE))
+dat <- data.frame(x = sample(LETTERS[1:4], 1000, p = c(.15, .4, .35. . 1), replace = TRUE), y = sample(LETTERS[20:26], 1000, p = c(.01, .08, .40, .30, .2, .01), replace = TRUE))
+dat <- data.frame(x = sample(LETTERS[1:4], 1000, p = c(.15, .4, .35, .1), replace = TRUE), y = sample(LETTERS[20:26], 1000, p = c(.01, .08, .40, .30, .2, .01), replace = TRUE))
+LETTERS[20:26]
+dat <- data.frame(x = sample(LETTERS[1:4], 1000, p = c(.15, .4, .35, .1), replace = TRUE), y = sample(LETTERS[21:26], 1000, p = c(.01, .08, .40, .30, .2, .01), replace = TRUE))
+ggplot(dat, aes(x = y, fill = y)) + geom_bar(stat = "count")
+library(ggplot)
+library(ggplot2)
+ggplot(dat, aes(x = y, fill = y)) + geom_bar(stat = "count")
+dat <- data.frame(var1 = sample(LETTERS[1:4], 1000, p = c(.15, .4, .35, .1), replace = TRUE), var2 = sample(LETTERS[21:26], 1000, p = c(.01, .08, .40, .30, .2, .01), replace = TRUE))#
+#
+ggplot(dat, aes(x = var1, fill = var2)) + geom_bar(stat = "count")
+dat$var2 <- factor(dat$var2, levels = c("Z", "Y", "X", "W", "V", "U")#
+ggplot(dat, aes(x = var1, fill = var2)) + geom_bar(stat = "count")
+dat$var2 <- factor(dat$var2, levels = c("Z", "Y", "X", "W", "V", "U"))#
+ggplot(dat, aes(x = var1, fill = var2)) + geom_bar(stat = "count")
+dat <- data.frame(var1 = sample(LETTERS[1:4], 1000, p = c(.15, .4, .35, .1), replace = TRUE), var2 = sample(LETTERS[21:26], 1000, p = c(.01, .08, .40, .30, .2, .01), replace = TRUE))#
+#
+ggplot(dat, aes(x = var1, fill = var2)) + geom_bar(stat = "count")
+dat$var2 <- factor(dat$var2, levels = c("Z", "Y", "X", "W", "V", "U"))#
+ggplot(dat, aes(x = var1, fill = var2)) + geom_bar(stat = "count")
+dat <- data.frame(var1 = sample(c("H", "S", "M", L"), 1000, p = c(.15, .4, .35, .1), replace = TRUE), var2 = sample(LETTERS[21:26], 1000, p = c(.01, .08, .40, .30, .2, .01), replace = TRUE))
+)
+dat <- data.frame(var1 = sample(c("H", "S", "M", "L"), 1000, p = c(.15, .4, .35, .1), replace = TRUE), var2 = sample(LETTERS[21:26], 1000, p = c(.01, .08, .40, .30, .2, .01), replace = TRUE))
+ggplot(dat, aes(x = var1, fill = var2)) + geom_bar(stat = "count")
+ggplot(dat, aes(x = var2, fill = var1)) + geom_bar(stat = "count")
+dat$var1 <- factor(var1, levels = c("L", "M", "S", "H"))#
+ggplot(dat, aes(x = var2, fill = var1)) + geom_bar(stat = "count")
+dat$var1 <- factor(dat$var1, levels = c("L", "M", "S", "H"))#
+ggplot(dat, aes(x = var2, fill = var1)) + geom_bar(stat = "count")
+ggplot(dat, aes(x = var2, fill = as.character(var1))) + geom_bar(stat = "count")
+ggplot(dat, aes(x = var2, fill = var1)) + geom_bar(stat = "count")
+update.packages("ggplot2")
+library(ggplot2)
+ggplot(dat, aes(x = var2, fill = var1)) + geom_bar(stat = "count")
+dat <- data.frame(var1 = sample(c("H", "S", "M", "L"), 1000, p = c(.15, .4, .35, .1), replace = TRUE), var2 = sample(LETTERS[21:26], 1000, p = c(.01, .08, .40, .30, .2, .01), replace = TRUE))#
+#
+ggplot(dat, aes(x = var2, fill = as.character(var1))) + geom_bar(stat = "count")
+library(reshape2)#
+library(pROC)#
+library(boot)#
+#
+source("./include/tomkit.R")#
+#
+api_dat <- read.csv("../df_data/api_results_v2.csv")#
+country_class <- read.csv("../df_data/country_classification.csv")#
+af_list <- read.csv("../df_data/af_project_report.csv")#
+cutoffs <- read.csv("./data/cutoff_dates.csv")#
+fcs_flags <- read.csv("../df_data/fcs_flag.csv")#
+api_full <- read.csv("../df_data/api_results_full.csv")#
+#
+proj_dates <- read.csv("../df_data/project_dates.csv")#
+## definitions#
+country_groupings <- c("Africa", "Caribbean", "Central America", "Central Asia", "Eastern Africa", "OECS Countries", "Pacific Islands", "South Asia", "South Eastern Europe and Balkans", "Western Africa")#
+## Data Cleaning#
+api_dat$approval_fy <- "FY" %+% substr(as.character(api_dat$approval_fiscal_year), 3,4)#
+country_class$country_code <- NULL#
+#
+ctry_class_long <- melt(country_class, id="country_name", value.name="classification")#
+#
+fcs_merge <- do.call(rbind, lapply(split(fcs_flags, fcs_flags$year), function(x){#
+	x$country_code <- NULL#
+	year1 <- x#
+	year1$year <- year1$year-1#
+	year2 <- x#
+	year2$year <- year2$year-2#
+	ret <- do.call(rbind, list(x, year1, year2))#
+	names(ret) <- c("country_short_name", "approval_fiscal_year")#
+	ret$fcs <- 1#
+	return(ret)#
+}))#
+#
+api_dat <- merge(api_dat, unique(fcs_merge), by=c("country_short_name", "approval_fiscal_year"), all.x=TRUE)#
+api_dat$fcs[is.na(api_dat$fcs)] <- 0#
+#
+## sector matrix#
+process_api_matrix <- function(api_subset){#
+	# pull major sector for each project#
+	tmp <- do.call(rbind, lapply(1:5, function(i, y){#
+		ret <- y[,c("project_id",sprintf("majorsector_name%d",i))]#
+		names(ret) <- c("project_id", "major_sector")#
+		return(ret)#
+	}, api_subset))#
+#
+	# # calculate ratio of each major sector #
+	# tmp <- unique(subset(tmp, !is.na(major_sector)))#
+	# tmp <- lapply(split(tmp, tmp$project_id), function(x){#
+		# x$ratio <- 1/nrow(x)#
+		# return(x)#
+	# })#
+	# tmp <- do.call(rbind,tmp)#
+	# put into a matrix#
+	#ret <- dcast(tmp, project_id ~ major_sector, fun=sum, value.var='ratio')#
+	tmp2 <- table(tmp$project_id, tmp$major_sector)#
+	tmp2[tmp2>1] <- 1#
+	ret <- as.data.frame.matrix(tmp2)#
+	## clean up names#
+	names(ret) <- tolower(names(ret))#
+	names(ret) <- gsub(",","", names(ret))#
+	names(ret) <- gsub(" ","_", names(ret))#
+	ret$project_id <- rownames(ret)#
+	return(ret)#
+}#
+#
+sector_mat <- process_api_matrix(api_dat)#
+sector_names <- subset(names(sector_mat), names(sector_mat) !='project_id')
+ls
+ls()
+df_model2/")   ## for working from home#
+#
+library(reshape2)#
+library(pROC)#
+library(boot)#
+#
+source("./include/tomkit.R")#
+#
+api_dat <- read.csv("../df_data/api_results_v2.csv")#
+country_class <- read.csv("../df_data/country_classification.csv")#
+af_list <- read.csv("../df_data/af_project_report.csv")#
+cutoffs <- read.csv("./data/cutoff_dates.csv")#
+fcs_flags <- read.csv("../df_data/fcs_flag.csv")#
+api_full <- read.csv("../df_data/api_results_full.csv")#
+#
+proj_dates <- read.csv("../df_data/project_dates.csv")#
+## definitions#
+country_groupings <- c("Africa", "Caribbean", "Central America", "Central Asia", "Eastern Africa", "OECS Countries", "Pacific Islands", "South Asia", "South Eastern Europe and Balkans", "Western Africa")#
+## Data Cleaning#
+api_dat$approval_fy <- "FY" %+% substr(as.character(api_dat$approval_fiscal_year), 3,4)#
+country_class$country_code <- NULL#
+#
+ctry_class_long <- melt(country_class, id="country_name", value.name="classification")#
+#
+fcs_merge <- do.call(rbind, lapply(split(fcs_flags, fcs_flags$year), function(x){#
+	x$country_code <- NULL#
+#
+	year1 <- x#
+	year1$year <- year1$year-1#
+	year2 <- x#
+	year2$year <- year2$year-2#
+#
+	ret <- do.call(rbind, list(x, year1, year2))#
+	names(ret) <- c("country_short_name", "approval_fiscal_year")#
+	ret$fcs <- 1#
+#
+	return(ret)#
+}))#
+#
+api_dat <- merge(api_dat, unique(fcs_merge), by=c("country_short_name", "approval_fiscal_year"), all.x=TRUE)#
+api_dat$fcs[is.na(api_dat$fcs)] <- 0#
+#
+## sector matrix#
+process_api_matrix <- function(api_subset){#
+	# pull major sector for each project#
+	tmp <- do.call(rbind, lapply(1:5, function(i, y){#
+		ret <- y[,c("project_id",sprintf("majorsector_name%d",i))]#
+		names(ret) <- c("project_id", "major_sector")#
+#
+		return(ret)#
+	}, api_subset))#
+#
+	# # calculate ratio of each major sector#
+	# tmp <- unique(subset(tmp, !is.na(major_sector)))#
+	# tmp <- lapply(split(tmp, tmp$project_id), function(x){#
+		# x$ratio <- 1/nrow(x)#
+		# return(x)#
+	# })#
+	# tmp <- do.call(rbind,tmp)#
+#
+	# put into a matrix#
+	#ret <- dcast(tmp, project_id ~ major_sector, fun=sum, value.var='ratio')#
+	tmp2 <- table(tmp$project_id, tmp$major_sector)#
+	tmp2[tmp2>1] <- 1#
+	ret <- as.data.frame.matrix(tmp2)#
+	## clean up names#
+	names(ret) <- tolower(names(ret))#
+	names(ret) <- gsub(",","", names(ret))#
+	names(ret) <- gsub(" ","_", names(ret))#
+	ret$project_id <- rownames(ret)#
+	return(ret)#
+}#
+#
+sector_mat <- process_api_matrix(api_dat)#
+sector_names <- subset(names(sector_mat), names(sector_mat) !='project_id')#
+proj_dates$ais_signoff_date <- as.Date(proj_dates$ais_signoff_date, format="%m/%d/%Y")#
+proj_dates$pcd_rev_date <- as.Date(proj_dates$pcd_rev_date, format="%m/%d/%Y")#
+proj_dates$appraisal_date <- as.Date(proj_dates$appraisal_date, format="%m/%d/%Y")#
+#
+proj_dates$pcd_rev_date <- ifelse(proj_dates$pcd_rev_date >= proj_dates$appraisal_date | is.na(proj_dates$pcd_rev_date),proj_dates$appraisal_date,proj_dates$pcd_rev_date)#
+## Build Proj Dat#
+proj_dat <- subset(api_dat,#
+	!is.na(region) &#
+		!is.na(project_managed_practice_code) &#
+		!is.na(ibrd_ida_commitments) &#
+		project_id %notin% af_list$project_id,#
+	c("project_id", "approval_fy","region", "country_short_name", "project_managed_practice_code", "approval_fiscal_year", "product_line_name", "project_status_name", "wbg_sector_board_code", "product_line_type","ibrd_ida_commitments","board_approval_date", "environmental_assessment_category", "closing_date", "fcs", "multi_sector_task_indicator")#
+)#
+#
+proj_dat <- merge(proj_dat, proj_dates[,c("project_id", "pcd_rev_date")], by="project_id", all.x=TRUE)#
+#
+# proj_dat$repeater_proc <- ifelse(proj_dat$repeater_process == 'YES', 1, 0)#
+proj_dat$multi_sector <- ifelse(is.na(proj_dat$multi_sector_task_indicator), 0, 1)#
+#
+proj_dat <- merge(proj_dat, ctry_class_long, by.x=c("country_short_name", "approval_fy"), by.y=c("country_name", "variable"), all.x=TRUE)#
+proj_dat$classification[proj_dat$classification %notin% c("L", "LM", "UM")] <- "N"#
+proj_dat$country_group <- ifelse(proj_dat$country_short_name %in% country_groupings, 1, 0)#
+#
+proj_dat <- merge(proj_dat, sector_mat, by="project_id", all=FALSE)#
+proj_dat$ibrd_ida_commitments <- sqrt(proj_dat$ibrd_ida_commitments)#
+#
+proj_dat$board_approval_date <- as.Date(proj_dat$board_approval_date)#
+proj_dat$closing_date <- as.Date(proj_dat$closing_date)#
+#
+proj_dat$prep_time <- as.integer(proj_dat$board_approval_date - proj_dat$pcd_rev_date)/365.25#
+proj_dat <- merge(proj_dat, cutoffs, by="project_id", all.x=TRUE)#
+proj_dat$cut_date <- as.Date(proj_dat$cut_date)#
+proj_dat$years <- as.integer(proj_dat$closing_date - proj_dat$board_approval_date)/365.25#
+proj_dat$years_cut <- as.integer(proj_dat$cut_date - proj_dat$board_approval_date)/365.25#
+#
+proj_dat$china <- ifelse(proj_dat$country_short_name == 'China', 1, 0)#
+proj_dat$india <- ifelse(proj_dat$country_short_name == 'India', 1, 0)#
+#
+proj_dat <- merge(proj_dat, api_full[,c("project_id", "location_nme", "full_bd_discussion_flag")], by="project_id", all.x=TRUE)#
+#
+proj_dat$urban <- ifelse(proj_dat$location_nme %in% c("Urban only", "Rural and Urban"), 1, 0)#
+proj_dat$rural <- ifelse(proj_dat$location_nme %in% c("Rural only", "Rural and Urban"), 1, 0)#
+proj_dat$rural_and_urban <- ifelse(proj_dat$location_nme == "Rural and Urban", 1, 0)#
+proj_dat$full_board <- ifelse(proj_dat$full_bd_discussion_flag == 'Y', 1, 0)#
+#
+proj_dat$classification <- factor(proj_dat$classification, levels=c("N", "L", "LM","UM"))#
+#
+rownames(proj_dat) <- proj_dat$project_id
+install.packages("rmongodb")
+install.packages("mongolite")
+library(mongolite)
+disb <- read.csv("Documents/World Bank/codebase/disbursement_analysis/df_data/3b.13.csv")
+head(disb)
+length(unique(disb$project_id))
+library(slidify)
+setwd("Documents/presentations/R Ladies/")
+author("Shiny Lightning Talk")
+slidify("index.Rmd")
